@@ -1,0 +1,14 @@
+#!/bin/bash
+
+trap 'onCtrlC' INT
+function onCtrlC () {
+	echo '停止MySQL Service'
+	mysql.server stop
+
+	echo '停止RabbitMQ Service'
+	rabbitmqctl stop
+    exit 0;
+}
+
+mysql.server stop
+rabbitmq-server
